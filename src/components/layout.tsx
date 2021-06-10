@@ -31,12 +31,12 @@ export default function Layout() {
 }
 
 const mainContainer: CSSProperties = {
-    height: '100vh',
-    width: "50%",
+    height: '70vh',
     minWidth: '250px',
 
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center"
 };
 
