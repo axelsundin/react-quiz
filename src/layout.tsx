@@ -17,12 +17,13 @@ function Button(props: Props) {
 }
 
 const mainContainer: CSSProperties = {
-    height: '100vh',
-    width: "50%",
+    height: '85%',
+/*     width: "50%", */
     minWidth: '250px',
 
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center",
 };
 
