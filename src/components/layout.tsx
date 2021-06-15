@@ -9,14 +9,9 @@ export default function Layout() {
             <Switch>
                 <Route exact path="/">
                     <div id="mainContainer" style={{...mainContainer}}>
-                        <Link to="/choose-name">PLAY</Link>
+                        <Link to="/game">PLAY</Link>
                         <Link to="/highscore">HIGHSCORE</Link>
                         <Link to="/settings">SETTINGS</Link>
-                    </div>
-                </Route>
-                <Route path="/choose-name">
-                    <div id="mainContainer" style={{...mainContainer}}>
-                        <ChooseName />
                     </div>
                 </Route>
                 <Route path="/game">

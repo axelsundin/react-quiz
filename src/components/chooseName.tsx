@@ -1,12 +1,15 @@
 import { Button, Input, } from "@material-ui/core";
+import { PinDropSharp } from "@material-ui/icons";
 import React, { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import {QuestionState, Difficulty} from "../API"
 import RadioButtonsGroup from "./chooseDifficulty";
 
+type SettingProps = {
+    action: () => void
+}
 
-
-export default function ChooseName() {
+export default function ChooseName({action}: SettingProps) {
     const [name, setName] = useState('');
     return (
         <div id="gameSettings" style={{...centerContent}}>
@@ -18,7 +21,7 @@ export default function ChooseName() {
             onChange={e => setName(e.target.value)}
         />
         <RadioButtonsGroup />
-        {(name) && <Button><Link to="/game">Play</Link></Button>}
+        {(name) && <Button onClick={action}><Link to="/game">Play</Link></Button>}
         </div>
     )
 }
