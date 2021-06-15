@@ -6,6 +6,7 @@ import QuestionCard from "./components/QuestionCard" ;
 import { Button } from '@material-ui/core';
 // Types
 import {QuestionState, Difficulty} from "./API"
+import ChooseName from './components/chooseName';
 
 export type AnswerObject = {
   question: string;
@@ -76,9 +77,7 @@ function Game() {
     <h1>Quiz App</h1>
     
     {gameOver || userAnswers.length===TOTAL_QUESTIONS?(
-      <button className="start" onClick={startTrivia}>
-        Start
-       </button>
+      <ChooseName action={startTrivia} />
     ): null}
     
     {!gameOver ?<p className="score">Score: {score}</p>: null}
