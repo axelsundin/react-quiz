@@ -9,7 +9,6 @@ type props = {
     useranswer: AnswerObject | undefined;
     questionNr: Number;
     totalQuestions: number;
-
 }
 
 const QuestionCard: React.FC<props> = ({question, answers, callback, useranswer, questionNr, totalQuestions }) => (

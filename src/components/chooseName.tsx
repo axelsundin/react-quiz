@@ -1,11 +1,15 @@
-import { Button, Input } from "@material-ui/core";
+import { Button, Input, } from "@material-ui/core";
 import React, { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
+import {QuestionState, Difficulty} from "../API"
+import RadioButtonsGroup from "./chooseDifficulty";
+
+
 
 export default function ChooseName() {
     const [name, setName] = useState('');
     return (
-        <div  style={{...centerContent}}>
+        <div id="gameSettings" style={{...centerContent}}>
         <Input
             type="text"
             name="name"
@@ -13,22 +17,14 @@ export default function ChooseName() {
             value={name}
             onChange={e => setName(e.target.value)}
         />
+        <RadioButtonsGroup />
         {(name) && <Button><Link to="/game">Play</Link></Button>}
         </div>
     )
-
-        /* return (
-            <div>
-                <h3>Enter name:</h3>
-                <input id="nameInput" type="text" />
-                <br />
-                <Link to="/game">PLAY</Link>
-            </div>
-        ) */
 }
 
 const centerContent: CSSProperties = {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
 }
 
