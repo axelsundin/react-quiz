@@ -1,33 +1,36 @@
-import { Button, Input, } from "@material-ui/core";
+import { Button, Input } from "@material-ui/core";
 import { PinDropSharp } from "@material-ui/icons";
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
-import {QuestionState, Difficulty} from "../API"
-import RadioButtonsGroup from "./chooseDifficulty";
+import { QuestionState, Difficulty } from "../API";
+import ChooseDifficulty from "./ChooseDifficulty";
 
-type SettingProps = {
-    action: () => void
-}
+import { UserContext } from "../game";
 
-export default function ChooseName({action}: SettingProps) {
-    const [name, setName] = useState('');
-    return (
-        <div id="gameSettings" style={{...centerContent}}>
-        <Input
-            type="text"
-            name="name"
-            placeholder="Enter Your Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-        />
-        <RadioButtonsGroup />
-        {(name) && <Button onClick={action}><Link to="/game">Play</Link></Button>}
-        </div>
-    )
+export default function ChooseName() {
+  const { name, setName, startTrivia } = useContext(UserContext);
+  return (
+    <div id="gameSettings" style={{ ...centerContent }}>
+      <Input
+        type="text"
+        name="name"
+        placeholder="Enter Your Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <ChooseDifficulty />
+
+      {{ name } && (
+        <Button onClick={startTrivia}>
+          <Link to="/game">Play</Link>
+        </Button>
+      )}
+    </div>
+  );
 }
 
 const centerContent: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-}
-
+  display: "flex",
+  flexDirection: "column",
+};
