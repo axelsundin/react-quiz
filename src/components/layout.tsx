@@ -19,6 +19,12 @@ export default function Layout() {
             <Game />
           </div>
         </Route>
+        <Route path="/*">
+          <div id="mainContainer" style={{ ...mainContainer }}>
+            <h1>Denna sidan finns ej</h1>
+            <Link to="/">TILLBAKA TILL START</Link>
+          </div>
+        </Route>
       </Switch>
     </Router>
   );

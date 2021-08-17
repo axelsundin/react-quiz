@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 // Types
 import { QuestionState, Difficulty } from "./API";
 import ChooseName from "./components/ChooseName";
+import Modal from "./components/Modal";
 
 export const UserContext = createContext<any | null>(null);
 
@@ -74,31 +75,44 @@ function Game() {
 
   return (
     <UserContext.Provider
-      value={{ name, difficulty, setName, setDifficulty, startTrivia }}
+      value={{
+        name,
+        difficulty,
+        score,
+        setName,
+        setDifficulty,
+        startTrivia,
+      }}
     >
       <div className="App">
         <h1>Quiz App</h1>
-        {name !== undefined ? (
-          <>
-            <h4>Welcome: {name}</h4>
-            <h4>Difficulty: {difficulty}</h4>
-          </>
-        ) : null}
-        {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <ChooseName />
-        ) : null}
-        {console.log(name, difficulty)}
-        {!gameOver ? <p className="score">Score: {score}</p> : null}
+        {console.log(
+          "answered quesetions: ",
+          userAnswers.length,
+          "gameOver: ",
+          gameOver,
+          "loading: ",
+          loading
+        )}
+        {gameOver ? <ChooseName /> : null}
         {loading && <p>Loading Questions ...</p>}
-        {!loading && !gameOver && (
-          <QuestionCard
-            questionNr={number + 1}
-            totalQuestions={TOTAL_QUESTIONS}
-            question={questions[number].question}
-            answers={questions[number].answers}
-            useranswer={userAnswers ? userAnswers[number] : undefined}
-            callback={checkAnswer}
-          />
+        {!loading && !gameOver && TOTAL_QUESTIONS > userAnswers.length && (
+          <>
+            <h4>Name: {name}</h4>
+            <h4>Difficulty: {difficulty}</h4>
+            <p className="score">Score: {score}</p>
+            <QuestionCard
+              questionNr={number + 1}
+              totalQuestions={TOTAL_QUESTIONS}
+              question={questions[number].question}
+              answers={questions[number].answers}
+              useranswer={userAnswers ? userAnswers[number] : undefined}
+              callback={checkAnswer}
+            />
+          </>
+        )}
+        {!loading && !gameOver && TOTAL_QUESTIONS === userAnswers.length && (
+          <Modal />
         )}
         {!gameOver &&
         !loading &&
