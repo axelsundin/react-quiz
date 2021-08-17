@@ -7,11 +7,15 @@ import { QuestionState, Difficulty } from "../API";
 import ChooseDifficulty from "./ChooseDifficulty";
 
 import { UserContext } from "../game";
+import ErrorBoundary from "./errorBoundary";
+import { type } from "os";
+import { testErrorBoundary } from "./errorBoundary";
 
 export default function ChooseName() {
   const { name, setName, startTrivia } = useContext(UserContext);
   return (
     <div id="gameSettings" style={{ ...centerContent }}>
+     
       <Input
         type="text"
         name="name"
@@ -19,6 +23,10 @@ export default function ChooseName() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      
+      
+     
+      
       <ChooseDifficulty />
 
       {{ name } && (
@@ -27,8 +35,12 @@ export default function ChooseName() {
         </Button>
       )}
     </div>
+
+    
   );
+  
 }
+
 
 const centerContent: CSSProperties = {
   display: "flex",
