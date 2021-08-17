@@ -10,6 +10,7 @@ import { UserContext } from "../game";
 import ErrorBoundary from "./errorBoundary";
 import { type } from "os";
 import { testErrorBoundary } from "./errorBoundary";
+import ChooseCategory from "./ChooseCategory";
 
 export default function ChooseName() {
   const { name, setName, startTrivia } = useContext(UserContext);
@@ -28,6 +29,7 @@ export default function ChooseName() {
      
       
       <ChooseDifficulty />
+      <ChooseCategory />
 
       {{ name } && (
         <Button onClick={startTrivia}>
