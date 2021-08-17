@@ -2,6 +2,7 @@ import React, { Component, CSSProperties } from "react";
 import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Game from "../game";
 import ChooseName from "./ChooseName";
+/* import Footer from "../footer"; */
 
 export default function Layout() {
   return (

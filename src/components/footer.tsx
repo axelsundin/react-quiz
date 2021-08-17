@@ -1,12 +1,12 @@
-//import React, { Component, CSSProperties } from 'react';
+import React, { Component, CSSProperties } from 'react';
 import { Typography } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
+/* import Button from '@material-ui/core/Button' */
 import Container from '@material-ui/core/Container'
-import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined';
+/* import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined'; */
 
 export default function AppFooter() {
     return (
-       /*  <div id="footerContainer" style={{...footerContainer}}> */
+        <div id="footerContainer" style={{...footerContainer}}> 
     <Container>
         <Typography 
             variant="h6" component="h3"
@@ -14,30 +14,36 @@ export default function AppFooter() {
             align="center"
             gutterBottom 
         >
-            Create a note with typography
+            Systemutveckling Ramverk
         </Typography> 
-
+        <Typography
+            variant="h6"
+            color="primary"
+            align="center"
+        >
+            Shahin, Axel och Sherin
+        </Typography>
+{/* 
         <Button 
-            href="http://google.com" 
+           /*  href="/*"  
             onClick= {()=> console.log('you clicked me')}
             type="submit"
             color="primary"
             variant="outlined"
-            
         > 
-            Submit
-        </Button>
+            
+        </Button> */}
         
-        <br />
 
-        { /* icons */}
-        <Brightness6OutlinedIcon /> 
+        { /* icon flytta till darkmode light mode  
+      {   <Brightness6OutlinedIcon /> */}
     </Container>
-        /* </div> */
-    )
+    </div>
+       
+    );
 }
 
-/*  const footerContainer: CSSProperties = {
+  const footerContainer: CSSProperties = {
     height: '15%',
     width: "100vw",
 
@@ -48,4 +54,4 @@ export default function AppFooter() {
 
     backgroundColor: "red",
     color: "white",
-};  */
+};
