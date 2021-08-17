@@ -1,0 +1,14 @@
+:root {
+    --background-color: #fefefe;
+    --color: #343434;
+  }
+  
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--color);
+    transition: background-color 1000ms linear;
+    transition: color 1000ms linear;
+  }
+  
