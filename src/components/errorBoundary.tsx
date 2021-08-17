@@ -33,10 +33,10 @@ export default class ErrorBoundary extends Component<Props, State> {
     }
 }
 
-/* export function testErrorBoundary() {
+export function testErrorBoundary() {
     const nullVariable: any = null;
     console.log(nullVariable.somethingThatDoesNotExist);
-} */
+}
 
 const appearance: CSSProperties = {
     background: 'white',
