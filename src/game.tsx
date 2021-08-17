@@ -30,13 +30,20 @@ function Game() {
 
   const [difficulty, setDifficulty] = useState("easy");
   const [name, setName] = useState(undefined);
+  const [category, setCategory] = useState("any");
+  const [categoryName, setCategoryName] = useState("Any Category");
 
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
 
     console.log(difficulty);
-    const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS, difficulty);
+    const newQuestions = await fetchQuizQuestions(
+      TOTAL_QUESTIONS,
+      difficulty,
+      category,
+      setCategoryName
+    );
 
     setQuestions(newQuestions);
     setScore(0);
@@ -79,27 +86,24 @@ function Game() {
         name,
         difficulty,
         score,
+        category,
+        categoryName,
+        setCategory,
         setName,
         setDifficulty,
         startTrivia,
+        setCategoryName,
       }}
     >
       <div className="App">
         <h1>Quiz App</h1>
-        {console.log(
-          "answered quesetions: ",
-          userAnswers.length,
-          "gameOver: ",
-          gameOver,
-          "loading: ",
-          loading
-        )}
         {gameOver ? <ChooseName /> : null}
         {loading && <p>Loading Questions ...</p>}
         {!loading && !gameOver && TOTAL_QUESTIONS > userAnswers.length && (
           <>
             <h4>Name: {name}</h4>
             <h4>Difficulty: {difficulty}</h4>
+            <h4>Category: {categoryName}</h4>
             <p className="score">Score: {score}</p>
             <QuestionCard
               questionNr={number + 1}

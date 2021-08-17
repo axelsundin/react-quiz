@@ -19,9 +19,50 @@ export enum Difficulty {
 
 export const fetchQuizQuestions = async (
   amount: number,
-  difficulty: string
+  difficulty: string,
+  category: string,
+  setCategoryName: any
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+  let endpoint = undefined;
+  if (typeof category === "string") {
+    switch (category) {
+      case "any":
+        setCategoryName("Any Category");
+        break;
+    }
+    endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+  } else {
+    switch (category) {
+      case 9:
+        setCategoryName("General Knowledge");
+        break;
+      case 11:
+        setCategoryName("Entertainment: Film");
+        break;
+      case 12:
+        setCategoryName("Entertainment: Music");
+        break;
+      case 18:
+        setCategoryName("Science: Computers");
+        break;
+      case 21:
+        setCategoryName("Sports");
+        break;
+      case 22:
+        setCategoryName("Geography");
+        break;
+      case 23:
+        setCategoryName("History");
+        break;
+      case 26:
+        setCategoryName("Celebrities");
+        break;
+      case 27:
+        setCategoryName("Animals");
+        break;
+    }
+    endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
+  }
   console.log("endpoint: ", endpoint);
   const data = await (await fetch(endpoint)).json();
   return data.results.map((question: Question) => ({

@@ -25,7 +25,7 @@ const OVERLAY_STYLE: CSSProperties = {
 };
 
 export default function Modal() {
-  const { name, difficulty, score } = useContext(UserContext);
+  const { name, difficulty, score, categoryName } = useContext(UserContext);
   const portalDiv = document.getElementById("portal");
 
   console.log(portalDiv);
@@ -36,6 +36,7 @@ export default function Modal() {
           <div style={MODAL_STYLE}>
             <h4>Name: {name}</h4>
             <h4>Difficulty: {difficulty}</h4>
+            <h4>Category: {categoryName}</h4>
             <p className="score">Score: {score}</p>
             <Button>
               <Link to="/">Back to start</Link>
