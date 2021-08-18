@@ -11,6 +11,11 @@ import Modal from "./components/Modal";
 
 export const UserContext = createContext<any | null>(null);
 
+export type lifeObject = {
+  question: string;
+  correct: string;
+};
+
 export type AnswerObject = {
   question: string;
   answer: string;
@@ -52,6 +57,11 @@ function Game() {
     setLoading(false);
   };
 
+  function lifeLine() {
+    const correct = questions[number].correct_answer;
+    return correct;
+  }
+
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
@@ -59,7 +69,6 @@ function Game() {
       const correct = questions[number].correct_answer === answer;
 
       if (correct) setScore((prev) => prev + 1);
-
       const answerObject = {
         question: questions[number].question,
         answer,
@@ -79,7 +88,7 @@ function Game() {
       setNumber(nextQuestion);
     }
   };
-/* throw new Error("Error i game") */
+  /* throw new Error("Error i game") */
 
   return (
     <UserContext.Provider
@@ -113,6 +122,7 @@ function Game() {
               answers={questions[number].answers}
               useranswer={userAnswers ? userAnswers[number] : undefined}
               callback={checkAnswer}
+              lifeline={lifeLine}
             />
           </>
         )}
