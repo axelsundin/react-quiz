@@ -52,6 +52,6 @@ export default function AppFooter() {
     justifyContent: "center",
     alignItems: "center",
 
-    backgroundColor: "red",
+    backgroundColor: "black",
     color: "white",
 };
