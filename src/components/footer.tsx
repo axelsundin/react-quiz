@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container'
 /* import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined'; */
 
 export default function AppFooter() {
+    /* throw new Error() */
     return (
         <div id="footerContainer" style={{...footerContainer}}> 
     <Container>
@@ -13,14 +14,14 @@ export default function AppFooter() {
             color="primary"
             align="center"
             gutterBottom 
-        >
+            >
             Systemutveckling Ramverk
         </Typography> 
         <Typography
             variant="subtitle2"
             color="primary"
             align="center"
-        >
+            >
             Shahin, Axel och Sherin
         </Typography>
 {/* 

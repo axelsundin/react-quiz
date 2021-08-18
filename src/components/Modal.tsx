@@ -27,11 +27,11 @@ const OVERLAY_STYLE: CSSProperties = {
 export default function Modal() {
   const { name, difficulty, score, categoryName } = useContext(UserContext);
   const portalDiv = document.getElementById("portal");
-
+  
   console.log(portalDiv);
   return portalDiv
-    ? ReactDOM.createPortal(
-        <>
+  ? ReactDOM.createPortal(
+    <>
           <div style={OVERLAY_STYLE}></div>
           <div style={MODAL_STYLE}>
             <h4>Name: {name}</h4>
@@ -44,6 +44,8 @@ export default function Modal() {
           </div>
         </>,
         portalDiv
-      )
-    : null;
+        )
+        : null;
+        
 }
+

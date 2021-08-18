@@ -2,10 +2,13 @@ import React, { Component, CSSProperties } from "react";
 import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Game from "../game";
 import ChooseName from "./ChooseName";
+import ErrorBoundary from "./errorBoundary";
 /* import Footer from "../footer"; */
 
 export default function Layout() {
+  /* throw new Error() */
   return (
+      <ErrorBoundary>
     <Router>
       <Switch>
         <Route exact path="/">
@@ -28,7 +31,9 @@ export default function Layout() {
         </Route>
       </Switch>
     </Router>
+    </ErrorBoundary>
   );
+  
 }
 
 const mainContainer: CSSProperties = {
