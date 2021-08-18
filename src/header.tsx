@@ -7,6 +7,7 @@ import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined';
 export default function AppHeader() {
     return (
         <div id="headerContainer" style={{...headerContainer}}>
+<<<<<<< Updated upstream
         <Container> 
             <Typography
                 variant="h6">
@@ -18,6 +19,19 @@ export default function AppHeader() {
             </Typography> 
         {/*     <Brightness6OutlinedIcon /> */}
         </Container> 
+=======
+            <Container> 
+                <Typography
+                    variant="h6">
+                        Välkommen!
+                </Typography> 
+                <Typography 
+                    variant="subtitle2">
+                        Sugen på Quiz?
+                </Typography> 
+            {/*     <Brightness6OutlinedIcon /> */}
+            </Container> 
+>>>>>>> Stashed changes
         </div>
     
     
