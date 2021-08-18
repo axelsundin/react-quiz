@@ -44,11 +44,11 @@ export default function AppFooter() {
 }
 
   const footerContainer: CSSProperties = {
-    height: '15%',
+    height: "15%",
     width: "100vw",
 
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
 
