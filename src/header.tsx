@@ -2,18 +2,23 @@
 import React, { Component, CSSProperties } from 'react';
 import { Typography } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
+import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined';
 
 export default function AppHeader() {
     return (
         <div id="headerContainer" style={{...headerContainer}}>
-            <h1>Välkommen</h1>
-            <h3>Sugen på Quiz?</h3>
+        <Container> 
+            <Typography
+                variant="h6">
+                    Välkommen!
+            </Typography> 
+            <Typography 
+                variant="subtitle2">
+                    Sugen på Quiz?
+            </Typography> 
+        {/*     <Brightness6OutlinedIcon /> */}
+        </Container> 
         </div>
-   /*<Container> 
-        <Typography>
-
-        </Typography>  
-    </Container> */
     
     
     );

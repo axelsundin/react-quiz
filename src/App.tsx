@@ -16,6 +16,7 @@ function App() {
       <AppHeader />
       <ThemeProvider>
         <Page/>
+        <Brightness6OutlinedIcon />
       <Layout />
       </ThemeProvider>
       <AppFooter />
@@ -30,7 +31,7 @@ const Page = () => {
       {/* <h1>{theme}</h1> */}
       <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
       {theme === "dark" ? "Switch to light mode" : "switch to dark mode"} 
-      <Brightness6OutlinedIcon />
+     {/*  <Brightness6OutlinedIcon /> */}
       </button>
     </div>
   );
