@@ -79,6 +79,7 @@ function Game() {
       setNumber(nextQuestion);
     }
   };
+/* throw new Error("Error i game") */
 
   return (
     <UserContext.Provider

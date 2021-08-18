@@ -11,7 +11,7 @@ export default class ErrorBoundary extends Component<Props, State> {
         hasError: false
     };
 
-   /*  reloadPage = () => {
+    /* reloadPage = () => {
         window.URL = window.URL;
     } */
 
@@ -23,7 +23,7 @@ export default class ErrorBoundary extends Component<Props, State> {
         if (this.state.hasError) {
             return (
                 <div style={{...appearance }}>
-                    <h2>Please enter your name</h2>
+                    <h2>Fel i Laddning</h2>
                     {/* <b><a href="" onClick={this.reloadPage}>Reload</a></b> */}
                 </div>
             );
@@ -33,10 +33,10 @@ export default class ErrorBoundary extends Component<Props, State> {
     }
 }
 
-export function testErrorBoundary() {
+/* export function testErrorBoundary() {
     const nullVariable: any = null;
     console.log(nullVariable.somethingThatDoesNotExist);
-}
+} */
 
 const appearance: CSSProperties = {
     background: 'white',
