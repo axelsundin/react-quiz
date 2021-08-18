@@ -17,7 +17,7 @@ export default function AppFooter() {
             Systemutveckling Ramverk
         </Typography> 
         <Typography
-            variant="h6"
+            variant="subtitle2"
             color="primary"
             align="center"
         >
