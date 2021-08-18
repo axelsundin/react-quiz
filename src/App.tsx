@@ -7,6 +7,7 @@ import AppFooter from './components/footer';
 
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import "./styles.css";
+import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined'; 
 
 
 function App() {
@@ -28,7 +29,8 @@ const Page = () => {
     <div>
       {/* <h1>{theme}</h1> */}
       <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-        {theme === "dark" ? "Switch to light mode" : "switch to dark mode"}
+      {theme === "dark" ? "Switch to light mode" : "switch to dark mode"} 
+      <Brightness6OutlinedIcon />
       </button>
     </div>
   );

@@ -9,7 +9,7 @@ export default function AppHeader() {
             <h1>Välkommen</h1>
             <h3>Sugen på Quiz?</h3>
         </div>
-   /*  <Container> 
+   /*<Container> 
         <Typography>
 
         </Typography>  
