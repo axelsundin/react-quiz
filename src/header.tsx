@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container'
 import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined';
 
 export default function AppHeader() {
+    /* throw new Error() */
     return (
         <div id="headerContainer" style={{...headerContainer}}>
             <Container> 
