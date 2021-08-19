@@ -11,6 +11,11 @@ import Modal from "./components/Modal";
 
 export const UserContext = createContext<any | null>(null);
 
+export type lifeObject = {
+  question: string;
+  correct: string;
+};
+
 export type AnswerObject = {
   question: string;
   answer: string;
@@ -32,6 +37,7 @@ function Game() {
   const [name, setName] = useState(undefined);
   const [category, setCategory] = useState("any");
   const [categoryName, setCategoryName] = useState("Any Category");
+  const [lifelineBtn, setLifelineBtn] = useState(false);
 
   const startTrivia = async () => {
     setLoading(true);
@@ -52,6 +58,19 @@ function Game() {
     setLoading(false);
   };
 
+  function lifeLine(answers: any[]) {
+    const correct = questions[number].correct_answer;
+    const incorrectAnswers: string[] = [];
+    console.log("correct : " + correct);
+    answers.map((answers) => {
+      if (answers !== correct) {
+        console.log("incorrect : " + answers);
+        incorrectAnswers.push(answers);
+      }
+    });
+    return incorrectAnswers;
+  }
+
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
@@ -59,7 +78,6 @@ function Game() {
       const correct = questions[number].correct_answer === answer;
 
       if (correct) setScore((prev) => prev + 1);
-
       const answerObject = {
         question: questions[number].question,
         answer,
@@ -77,9 +95,10 @@ function Game() {
       setGameOver(true);
     } else {
       setNumber(nextQuestion);
+      setLifelineBtn(false);
     }
   };
-/* throw new Error("Error i game") */
+  /* throw new Error("Error i game") */
 
   return (
     <UserContext.Provider
@@ -94,6 +113,8 @@ function Game() {
         setDifficulty,
         startTrivia,
         setCategoryName,
+        lifelineBtn,
+        setLifelineBtn,
       }}
     >
       <div className="App">
@@ -113,6 +134,7 @@ function Game() {
               answers={questions[number].answers}
               useranswer={userAnswers ? userAnswers[number] : undefined}
               callback={checkAnswer}
+              lifeline={lifeLine}
             />
           </>
         )}

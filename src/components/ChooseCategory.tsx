@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ChooseCategory() {
   const classes = useStyles();
-  const { category, setCategory, categoryName, setCategoryName } =
-    useContext(UserContext);
+  const { category, setCategory } = useContext(UserContext);
 
   return (
     <div>
