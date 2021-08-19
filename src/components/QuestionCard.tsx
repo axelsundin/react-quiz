@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { AnswerObject } from "../game";
+import { shuffleArray } from "../utils";
 
 type props = {
   question: string;
@@ -19,29 +20,101 @@ const QuestionCard: React.FC<props> = ({
   useranswer,
   questionNr,
   totalQuestions,
-}) => (
-  <div>
-    <p className="number">
-      Question: {questionNr} / {totalQuestions}
-    </p>
+}) => {
+  const [lifelineUsed, setLifelineUsed] = useState(false);
+  let incorrectAnswers = lifeline(answers);
 
-    <p dangerouslySetInnerHTML={{ __html: question }} />
-    {answers.map((answers) => {})}
-    <button onClick={lifeline}>50/50 life-line</button>
-    <div>
-      {answers.map((answer) => (
-        <div key={answer}>
+  return (
+    <>
+      {!lifelineUsed ? (
+        <div>
+          <p className="number">
+            Question: {questionNr} / {totalQuestions}
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: question }} />
+
           <button
-            disabled={useranswer ? true : false}
-            value={answer}
-            onClick={callback}
+            onClick={() => {
+              incorrectAnswers = shuffleArray(incorrectAnswers);
+              answers.map((answer) => {
+                if (
+                  answer === incorrectAnswers[0] ||
+                  answer === incorrectAnswers[1]
+                ) {
+                  console.log(answer);
+                  setLifelineUsed(true);
+                }
+              });
+            }}
           >
-            <span dangerouslySetInnerHTML={{ __html: answer }}></span>
+            50/50 life-line
           </button>
+          <div>
+            {answers.map((answer) => (
+              <div key={answer}>
+                <button
+                  disabled={useranswer ? true : false}
+                  value={answer}
+                  onClick={callback}
+                >
+                  <span dangerouslySetInnerHTML={{ __html: answer }}></span>
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-);
+      ) : (
+        <div>
+          <p className="number">
+            Question: {questionNr} / {totalQuestions}
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: question }} />
+
+          <button disabled={true}>50/50 life-line</button>
+          <div>
+            {answers.map((answer) => {
+              return (
+                <>
+                  {answer === incorrectAnswers[0] ||
+                  answer === incorrectAnswers[1] ? (
+                    <div key={answer}>
+                      <button
+                        disabled={true}
+                        value={answer}
+                        onClick={(e) => {
+                          callback(e);
+                          setLifelineUsed(false);
+                        }}
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: answer }}
+                        ></span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div key={answer}>
+                      <button
+                        disabled={useranswer ? true : false}
+                        value={answer}
+                        onClick={(e) => {
+                          callback(e);
+                          setLifelineUsed(false);
+                        }}
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: answer }}
+                        ></span>
+                      </button>
+                    </div>
+                  )}
+                </>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 export default QuestionCard;

@@ -4,6 +4,30 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { UserContext } from "../game";
 
+export default function Modal() {
+  const { name, difficulty, score, categoryName } = useContext(UserContext);
+  const portalDiv = document.getElementById("portal");
+
+  console.log(portalDiv);
+  return portalDiv
+    ? ReactDOM.createPortal(
+        <>
+          <div style={OVERLAY_STYLE}></div>
+          <div style={MODAL_STYLE}>
+            <h4>Name: {name}</h4>
+            <h4>Difficulty: {difficulty}</h4>
+            <h4>Category: {categoryName}</h4>
+            <p className="score">Score: {score}</p>
+            <Button>
+              <Link to="/">Back to start</Link>
+            </Button>
+          </div>
+        </>,
+        portalDiv
+      )
+    : null;
+}
+
 const MODAL_STYLE: CSSProperties = {
   position: "fixed",
   top: "50%",
@@ -23,29 +47,3 @@ const OVERLAY_STYLE: CSSProperties = {
   background: "rgba(0, 0, 0, .8)",
   zIndex: 1000,
 };
-
-export default function Modal() {
-  const { name, difficulty, score, categoryName } = useContext(UserContext);
-  const portalDiv = document.getElementById("portal");
-  
-  console.log(portalDiv);
-  return portalDiv
-  ? ReactDOM.createPortal(
-    <>
-          <div style={OVERLAY_STYLE}></div>
-          <div style={MODAL_STYLE}>
-            <h4>Name: {name}</h4>
-            <h4>Difficulty: {difficulty}</h4>
-            <h4>Category: {categoryName}</h4>
-            <p className="score">Score: {score}</p>
-            <Button>
-              <Link to="/">Back to start</Link>
-            </Button>
-          </div>
-        </>,
-        portalDiv
-        )
-        : null;
-        
-}
-

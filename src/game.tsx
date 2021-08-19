@@ -57,9 +57,17 @@ function Game() {
     setLoading(false);
   };
 
-  function lifeLine() {
+  function lifeLine(answers: any[]) {
     const correct = questions[number].correct_answer;
-    return correct;
+    const incorrectAnswers: string[] = [];
+    console.log("correct : " + correct);
+    answers.map((answers) => {
+      if (answers !== correct) {
+        console.log("incorrect : " + answers);
+        incorrectAnswers.push(answers);
+      }
+    });
+    return incorrectAnswers;
   }
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -103,6 +111,7 @@ function Game() {
         setDifficulty,
         startTrivia,
         setCategoryName,
+        checkAnswer,
       }}
     >
       <div className="App">
