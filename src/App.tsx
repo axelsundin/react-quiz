@@ -15,7 +15,9 @@ import ErrorBoundary from "./components/errorBoundary";
 function App() {
   return (
     <div>
+      <ErrorBoundary>
       <AppHeader />
+      </ErrorBoundary>
       <ThemeProvider>
         <Layout />
       </ThemeProvider>
