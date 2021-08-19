@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AnswerObject } from "../game";
+import React, { useContext, useState } from "react";
+import { AnswerObject, UserContext } from "../game";
 import { shuffleArray } from "../utils";
 
 type props = {
@@ -21,7 +21,9 @@ const QuestionCard: React.FC<props> = ({
   questionNr,
   totalQuestions,
 }) => {
+  const { lifelineBtn, setLifelineBtn } = useContext(UserContext);
   const [lifelineUsed, setLifelineUsed] = useState(false);
+
   let incorrectAnswers = lifeline(answers);
 
   return (
@@ -34,6 +36,7 @@ const QuestionCard: React.FC<props> = ({
           <p dangerouslySetInnerHTML={{ __html: question }} />
 
           <button
+            disabled={lifelineBtn}
             onClick={() => {
               incorrectAnswers = shuffleArray(incorrectAnswers);
               answers.map((answer) => {
@@ -43,6 +46,7 @@ const QuestionCard: React.FC<props> = ({
                 ) {
                   console.log(answer);
                   setLifelineUsed(true);
+                  setLifelineBtn(true);
                 }
               });
             }}
@@ -70,7 +74,7 @@ const QuestionCard: React.FC<props> = ({
           </p>
           <p dangerouslySetInnerHTML={{ __html: question }} />
 
-          <button disabled={true}>50/50 life-line</button>
+          <button disabled={lifelineBtn}>50/50 life-line</button>
           <div>
             {answers.map((answer) => {
               return (

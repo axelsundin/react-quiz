@@ -37,6 +37,7 @@ function Game() {
   const [name, setName] = useState(undefined);
   const [category, setCategory] = useState("any");
   const [categoryName, setCategoryName] = useState("Any Category");
+  const [lifelineBtn, setLifelineBtn] = useState(false);
 
   const startTrivia = async () => {
     setLoading(true);
@@ -94,6 +95,7 @@ function Game() {
       setGameOver(true);
     } else {
       setNumber(nextQuestion);
+      setLifelineBtn(false);
     }
   };
   /* throw new Error("Error i game") */
@@ -111,7 +113,8 @@ function Game() {
         setDifficulty,
         startTrivia,
         setCategoryName,
-        checkAnswer,
+        lifelineBtn,
+        setLifelineBtn,
       }}
     >
       <div className="App">
