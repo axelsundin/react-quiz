@@ -1,10 +1,8 @@
-import React, { useState, createContext, } from "react";
-
+import React, { useState, createContext } from "react";
 
 import { fetchQuizQuestions } from "./API";
 
 import QuestionCard from "./components/QuestionCard";
-
 
 import { QuestionState, Difficulty } from "./API";
 import ChooseName from "./components/ChooseName";
@@ -44,7 +42,6 @@ function Game() {
     setLoading(true);
     setGameOver(false);
 
-    
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       difficulty,
@@ -62,10 +59,9 @@ function Game() {
   function lifeLine(answers: any[]) {
     const correct = questions[number].correct_answer;
     const incorrectAnswers: string[] = [];
-   
+
     answers.map((answers) => {
       if (answers !== correct) {
-        
         incorrectAnswers.push(answers);
       }
     });
@@ -74,8 +70,8 @@ function Game() {
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
+      setLifelineBtn(true);
       const answer = e.currentTarget.value;
-
       const correct = questions[number].correct_answer === answer;
 
       if (correct) setScore((prev) => prev + 1);
