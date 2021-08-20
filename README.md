@@ -1,6 +1,11 @@
+# Grupp 7 Axel, Shahin S, Sherin
+Create React App - "Sugen på Quiz" Quiz App
+Länk till GitHub repot: https://github.com/axelsundin/react-quiz
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
