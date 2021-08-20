@@ -44,7 +44,7 @@ const QuestionCard: React.FC<props> = ({
                   answer === incorrectAnswers[0] ||
                   answer === incorrectAnswers[1]
                 ) {
-                  console.log(answer);
+                  
                   setLifelineUsed(true);
                   setLifelineBtn(true);
                 }

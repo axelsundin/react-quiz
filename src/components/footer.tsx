@@ -1,8 +1,8 @@
-import React, { Component, CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { Typography } from '@material-ui/core'
-/* import Button from '@material-ui/core/Button' */
+
 import Container from '@material-ui/core/Container'
-/* import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined'; */
+
 
 export default function AppFooter() {
     /* throw new Error() */
@@ -24,20 +24,7 @@ export default function AppFooter() {
             >
             Shahin, Axel och Sherin
         </Typography>
-{/* 
-        <Button 
-           /*  href="/*"  
-            onClick= {()=> console.log('you clicked me')}
-            type="submit"
-            color="primary"
-            variant="outlined"
-        > 
-            
-        </Button> */}
-        
 
-        { /* icon flytta till darkmode light mode  
-      {   <Brightness6OutlinedIcon /> */}
     </Container>
     </div>
        

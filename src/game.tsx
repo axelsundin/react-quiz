@@ -1,10 +1,11 @@
-import React, { useState, createContext, useContext } from "react";
-import Typography from "@material-ui/core/Typography";
+import React, { useState, createContext, } from "react";
+
+
 import { fetchQuizQuestions } from "./API";
-// Components
+
 import QuestionCard from "./components/QuestionCard";
-import { Button } from "@material-ui/core";
-// Types
+
+
 import { QuestionState, Difficulty } from "./API";
 import ChooseName from "./components/ChooseName";
 import Modal from "./components/Modal";
@@ -43,7 +44,7 @@ function Game() {
     setLoading(true);
     setGameOver(false);
 
-    console.log(difficulty);
+    
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       difficulty,
@@ -61,10 +62,10 @@ function Game() {
   function lifeLine(answers: any[]) {
     const correct = questions[number].correct_answer;
     const incorrectAnswers: string[] = [];
-    console.log("correct : " + correct);
+   
     answers.map((answers) => {
       if (answers !== correct) {
-        console.log("incorrect : " + answers);
+        
         incorrectAnswers.push(answers);
       }
     });

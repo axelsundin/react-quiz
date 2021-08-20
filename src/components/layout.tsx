@@ -1,39 +1,83 @@
-import React, { Component, CSSProperties } from "react";
+import React, { Component, CSSProperties,useState } from "react";
 import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Game from "../game";
-import ChooseName from "./ChooseName";
+
 import ErrorBoundary from "./errorBoundary";
-/* import Footer from "../footer"; */
+
 import Brightness6OutlinedIcon from "@material-ui/icons/Brightness6Outlined";
 import { useTheme } from "./ThemeContext";
 
+
+
 export default function Layout() {
   /* throw new Error() */
+  
+    const [fontSize, updateFontSize] = useState("100%");
+  
+    const mainContainer: CSSProperties = {
+    height: "70vh",
+    minWidth: "250px",
+    fontSize: fontSize,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left"
+  };
+
+function Font(){
+  
+  function handleClick()  {
+    
+    if(fontSize==="100%"){
+      updateFontSize("200%")
+    }else{
+      updateFontSize("100%")
+    }
+
+
+    
+
+  }
+  
+  return <button onClick={handleClick}>Change font Size</button>
+}
+
+
+
+
+
   return (
     <ErrorBoundary>
       <Router>
         <Switch>
           <Route exact path="/">
             <div id="mainContainer" style={{ ...mainContainer }}>
-              <Page />
-              <Brightness6OutlinedIcon />
-              <Link to="/game">PLAY</Link>
-              <Link to="/highscore">HIGHSCORE</Link>
-              <Link to="/settings">SETTINGS</Link>
+              
+             <button style={{fontSize:"20px",padding:"5px"}}> <Link to="/game">PLAY</Link></button> 
+              
+             <button style={{fontSize:"20px",padding:"5px"}}><Link to="/settings">SETTINGS</Link></button> 
             </div>
           </Route>
           <Route path="/game">
             <div id="mainContainer" style={{ ...mainContainer }}>
-              <Page />
-              <Brightness6OutlinedIcon />
+              
               <Game />
+            </div>
+          </Route>
+          
+          <Route path="/settings">
+            <div id="mainContainer" style={{ ...mainContainer }}>
+              <Brightness6OutlinedIcon />
+              <Page />
+              <Font />
+              <Link to="/">TILLBAKA TILL START</Link>
             </div>
           </Route>
           <Route path="/*">
             <div id="mainContainer" style={{ ...mainContainer }}>
-              <Page />
-              <Brightness6OutlinedIcon />
-              <h1>Denna sidan finns ej</h1>
+              
+              <Font/>
               <Link to="/">TILLBAKA TILL START</Link>
             </div>
           </Route>
@@ -41,6 +85,9 @@ export default function Layout() {
       </Router>
     </ErrorBoundary>
   );
+
+
+
 }
 
 const Page = () => {
@@ -56,12 +103,4 @@ const Page = () => {
   );
 };
 
-const mainContainer: CSSProperties = {
-  height: "70vh",
-  minWidth: "250px",
 
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-};
