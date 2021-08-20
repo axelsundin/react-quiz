@@ -1,12 +1,11 @@
 import { Button, Input } from "@material-ui/core";
-import React, { CSSProperties, useState, useContext } from "react";
+import React, { CSSProperties, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import ChooseDifficulty from "./ChooseDifficulty";
 
 import { UserContext } from "../game";
-import ErrorBoundary from "./errorBoundary";
-import { type } from "os";
+
 import ChooseCategory from "./ChooseCategory";
 
 export default function ChooseName() {

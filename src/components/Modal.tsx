@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState, useContext } from "react";
+import React, { CSSProperties,useContext } from "react";
 import ReactDOM from "react-dom";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ export default function Modal() {
   const { name, difficulty, score, categoryName } = useContext(UserContext);
   const portalDiv = document.getElementById("portal");
 
-  console.log(portalDiv);
+  
   return portalDiv
     ? ReactDOM.createPortal(
         <>

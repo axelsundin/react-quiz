@@ -1,4 +1,4 @@
-// header inte material ui
+
 import React, { Component, CSSProperties } from 'react';
 import { Typography } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
@@ -17,7 +17,7 @@ export default function AppHeader() {
                     variant="subtitle2">
                         Sugen på Quiz?
                 </Typography> 
-            {/*     <Brightness6OutlinedIcon /> */}
+       
             </Container> 
         </div>
     
